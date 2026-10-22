@@ -305,13 +305,5 @@
     f.reset();
   });
 
-  /* ===== Menu mobile ===== */
-  const burger = $(".nav__burger"), menu = $("#menu");
-  burger.addEventListener("click", () => {
-    const open = menu.classList.toggle("is-open");
-    burger.setAttribute("aria-expanded", String(open));
-    burger.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
-    burger.querySelector("use").setAttribute("href", open ? "#i-close" : "#i-menu");
-  });
-  menu.addEventListener("click", (e) => { if (e.target.closest("a") && menu.classList.contains("is-open")) burger.click(); });
+  /* Le menu (desktop et mobile) est géré par menu/menu.js */
 })();

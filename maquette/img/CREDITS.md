@@ -1,14 +1,20 @@
 # Provenance des images (maquette)
 
-| Fichier | Source | Droits |
-|---|---|---|
-| news-itil5.jpg | bostonsoluxacademy.com, article « BostonSolux célèbre le lancement officiel d'ITIL® Foundation Version 5 » (wp-content/uploads/2026/06/1772059388125-1.jpg) | Image du client |
-| news-42001.jpg | bostonsoluxacademy.com, article « Formation PECB ISO/IEC 42001 Lead Implementer » (wp-content/uploads/2026/06/IMG-20251110-WA0225.jpg) | Image du client |
-| news-27001.jpg | bostonsoluxacademy.com, article « 5 bonnes raisons de se former à l'ISO 27001 Lead Implementer » (wp-content/uploads/2026/08/ChatGPT-Image-17-aout-2026-15_46_33.png), recadrée sans le texte incrusté | Image du client |
-| news-27005.jpg | bostonsoluxacademy.com, article « 5 formations pour se spécialiser en cybersécurité et en gestion des risques » (wp-content/uploads/2026/06/ChatGPT-Image-18-mai-2026-14_46_47-1.png) | Image du client |
-| news-62443.jpg | Unsplash, « Un homme inspecte l'équipement d'une usine moderne » (photo-1748347084012-075796185d56) | Licence Unsplash (usage libre) |
+Photos HD Unsplash (licence Unsplash : usage libre, commercial compris, sans attribution obligatoire). Fichiers servis par images.unsplash.com.
 
-Toutes recadrées en 960 x 640 (ffmpeg). À remplacer par les visuels définitifs des articles publiés.
+| Fichier | Photo Unsplash | Sujet | Utilisée dans |
+|---|---|---|---|
+| news-itil5.jpg | photo-1531482615713-2afd69097998 | Équipe au poste de travail | Actu ITIL V5 (V1, V2) |
+| news-42001.jpg | photo-1677442136019-21780ecad995 | Visuel « AI » | Actu ISO/IEC 42001 (V1, V2) |
+| news-62443.jpg | photo-1581091226825-a6a2a5aee158 | Ingénieure en environnement industriel | Actu ISA/IEC 62443 (V1, V2) |
+| news-27001.jpg | photo-1573164713988-8665fc963095 | Professionnelle en salle serveurs | Actu ISO/IEC 27001 (V1, V2) |
+| news-27005.jpg | photo-1622675363311-3e1904dc1885 | Équipe en réunion d'analyse | Actu ISO/IEC 27005 (V1, V2) |
+| card-formateurs.jpg | photo-1591115765373-5207764f72e7 | Formateur devant un groupe | Carte « Des formateurs praticiens » (V2) |
+| card-examen.jpg | photo-1507537297725-24a1c029d3ca | Professionnel en révision (recadrée) | Carte « Préparation à l'examen » (V2) |
+| card-terrain.jpg | photo-1573164574572-cb89e39749b4 | Salle de formation | Carte « Sur le terrain » (V2) |
+| card-suivi.jpg | photo-1600880292203-757bb62b4baf | Réussite en équipe | Carte « Suivi jusqu'à la certification » (V2) |
+
+Actualités 2400 px de large, cartes 1600 px (JPEG, ffmpeg q=4). Les photos réelles des sessions BostonSolux peuvent remplacer ces visuels dès qu'elles existent en HD.
 
 ## Logos
 

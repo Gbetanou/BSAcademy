@@ -98,7 +98,10 @@
     if (s) {
       setCity("all");
       const ev = $(`#ev-${c.id}`);
-      scrollToEl(ev, () => flash(ev.querySelector(".event__card")));
+      scrollToEl($("#sessions"), () => {
+        sessionList.scrollTo({ left: ev.offsetLeft - parseFloat(getComputedStyle(sessionList).paddingLeft), behavior: reduced ? "auto" : "smooth" });
+        setTimeout(() => flash(ev.querySelector(".session__card")), reduced ? 0 : 450);
+      });
     } else {
       $("#devis-formation").value = c.full;
       scrollToEl($("#devis"), () => $("#devis-form").email.focus({ preventScroll: true }));
@@ -261,22 +264,70 @@
     </li>`;
   }).join("");
 
-  /* ===== Prochaines sessions ===== */
+  /* ===== Prochaines sessions : carrousel de cartes ===== */
   const sessionList = $("#session-list");
   sessionList.innerHTML = upcoming.map((s) => {
     const c = byId[s.course], a = parse(s.start), n = daysUntil(s.start);
-    return `<li class="event" id="ev-${c.id}" data-city="${esc(s.city)}"><div class="event__card">
-      <div class="event__date"><span class="event__day">${String(a.getDate()).padStart(2, "0")}</span><span class="event__month">${fmtMonth.format(a)}</span></div>
-      ${c.logo ? `<span class="event__logo"><img src="${esc(A(c.logo))}" alt="" loading="lazy"></span>` : "<span></span>"}
-      <div><p class="event__domain">${esc(domains.find((d) => d.id === c.d).name)}</p><h3>${esc(s.title)}</h3></div>
-      <div class="event__where">
-        <span>${icon("pin")}${esc(s.city)}, ${esc(s.country)}${s.venue ? ` (${esc(s.venue)})` : ""}</span>
-        <span>${icon("cal")}${range(s)}, ${length(s)} jours</span>
-        <span class="event__soon"${n <= 7 ? " data-urgent" : ""}>${soonLabel(n)}, places disponibles</span>
+    return `<li class="session" id="ev-${c.id}" data-city="${esc(s.city)}"><article class="session__card">
+      <div class="session__top">
+        <span class="session__logo">${c.logo ? `<img src="${esc(A(c.logo))}" alt="" loading="lazy" draggable="false">` : `<b>${esc(codeLabel(c))}</b>`}</span>
+        <span class="session__date"><b>${String(a.getDate()).padStart(2, "0")}</b>${esc(fmtMonth.format(a))}</span>
       </div>
-      <div class="event__cta"><a class="btn btn--red" href="#devis" data-enrol="${c.id}">S'inscrire</a><a class="btn btn--line" href="#">Programme</a></div>
-    </div></li>`;
+      <h3>${esc(s.title)}</h3>
+      <p class="session__domain">${esc(domains.find((d) => d.id === c.d).name)}</p>
+      <ul class="session__facts">
+        <li>${icon("pin")}<span>${esc(s.city)}, ${esc(s.country)}${s.venue ? ` (${esc(s.venue)})` : ""}</span></li>
+        <li>${icon("cal")}<span>${range(s)}, ${length(s)} jours</span></li>
+      </ul>
+      <p class="session__soon"${n <= 7 ? " data-urgent" : ""}><i aria-hidden="true"></i>${soonLabel(n)}, places disponibles</p>
+      <div class="session__cta"><a class="btn btn--red" href="#devis" data-enrol="${c.id}">S'inscrire</a><a class="btn btn--line" href="#">Programme</a></div>
+    </article></li>`;
   }).join("");
+
+  const prevBtn = $("#sessions-prev"), nextBtn = $("#sessions-next"), countEl = $("#sessions-count"), barEl = $("#sessions-progress");
+  const shown = () => $$(".session", sessionList).filter((el) => !el.hidden);
+  const gapPx = () => parseFloat(getComputedStyle(sessionList).columnGap) || 0;
+  const stepPx = () => { const c = shown()[0]; return c ? c.offsetWidth + gapPx() : 0; }; // largeur de mise en page, insensible aux animations
+  function updateCarousel() {
+    const total = shown().length, s = stepPx() || 1;
+    const per = Math.min(total, Math.max(1, Math.floor((sessionList.clientWidth + gapPx() + 4) / s)));
+    const max = sessionList.scrollWidth - sessionList.clientWidth;
+    const first = Math.min(total - per, Math.round(sessionList.scrollLeft / s));
+    countEl.textContent = !total ? "Aucune session" : per >= total ? `${total} session${total > 1 ? "s" : ""}` : per === 1 ? `${first + 1} sur ${total}` : `${first + 1}–${first + per} sur ${total}`;
+    prevBtn.disabled = sessionList.scrollLeft <= 6;
+    nextBtn.disabled = sessionList.scrollLeft >= max - 6;
+    const f = Math.min(1, sessionList.clientWidth / Math.max(1, sessionList.scrollWidth));
+    barEl.style.width = f * 100 + "%";
+    barEl.style.transform = `translateX(${max > 0 ? ((sessionList.scrollLeft / max) * (1 - f) / f) * 100 : 0}%)`;
+  }
+  const slide = (dir) => sessionList.scrollBy({ left: dir * stepPx(), behavior: reduced ? "auto" : "smooth" });
+  prevBtn.addEventListener("click", () => slide(-1));
+  nextBtn.addEventListener("click", () => slide(1));
+  let raf = 0;
+  sessionList.addEventListener("scroll", () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(updateCarousel); }, { passive: true });
+  addEventListener("resize", updateCarousel);
+  // glisser à la souris (le tactile utilise le défilement natif)
+  let drag = null;
+  sessionList.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    drag = { x: e.clientX, left: sessionList.scrollLeft, moved: false };
+  });
+  addEventListener("pointermove", (e) => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x;
+    if (!drag.moved && Math.abs(dx) > 5) { drag.moved = true; sessionList.classList.add("is-dragging"); }
+    if (drag.moved) sessionList.scrollLeft = drag.left - dx;
+  });
+  addEventListener("pointerup", () => {
+    if (!drag) return;
+    const moved = drag.moved; drag = null;
+    if (!moved) return;
+    const s = stepPx() || 1;
+    const target = Math.round(sessionList.scrollLeft / s) * s; // se cale sur la carte la plus proche
+    sessionList.classList.remove("is-dragging");
+    sessionList.scrollTo({ left: target, behavior: reduced ? "auto" : "smooth" });
+  });
+
   const cities = [...new Set(upcoming.map((s) => s.city))];
   $("#city-filters").innerHTML = [["all", "Toutes", upcoming.length], ...cities.map((c) => [c, c, upcoming.filter((s) => s.city === c).length])]
     .map(([v, l, n], i) => `<button type="button" data-city="${esc(v)}" aria-pressed="${i === 0}">${esc(l)}<span>${n}</span></button>`).join("");
@@ -284,19 +335,23 @@
     const btns = $$("#city-filters button");
     if (btns.find((b) => b.dataset.city === city)?.getAttribute("aria-pressed") === "true") return;
     btns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.city === city)));
-    const items = $$(".event", sessionList);
+    const items = $$(".session", sessionList);
     const state = motion ? Flip.getState(items) : null;
     items.forEach((el) => (el.hidden = city !== "all" && el.dataset.city !== city));
+    sessionList.scrollLeft = 0;
     if (motion) {
       Flip.from(state, {
         duration: 0.6, ease: "power3.inOut", absolute: true, scale: true,
-        onEnter: (els) => G.fromTo(els, { autoAlpha: 0, scale: 0.96 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "expo.out" }),
-        onLeave: (els) => G.to(els, { autoAlpha: 0, scale: 0.96, duration: 0.3, ease: "power2.out" }),
-        onComplete: () => ScrollTrigger.refresh()
+        onEnter: (els) => G.fromTo(els, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "expo.out", stagger: 0.06 }),
+        onLeave: (els) => G.to(els, { autoAlpha: 0, y: 20, duration: 0.3, ease: "power2.out" }),
+        onComplete: updateCarousel
       });
     }
+    updateCarousel();
   }
   $("#city-filters").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) setCity(b.dataset.city); });
+  updateCarousel();
+  addEventListener("load", updateCarousel);
 
   /* ===== Engagement ===== */
   $$(".card").forEach((c, i) => c.style.setProperty("--i", i));
@@ -360,15 +415,8 @@
     f.reset();
   });
 
-  /* ===== Menu mobile ===== */
-  const nav = $("#nav"), burger = $(".nav__burger"), menu = $("#menu");
-  burger.addEventListener("click", () => {
-    const open = menu.classList.toggle("is-open");
-    burger.setAttribute("aria-expanded", String(open));
-    burger.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
-    $("use", burger).setAttribute("href", open ? "#i-close" : "#i-menu");
-  });
-  menu.addEventListener("click", (e) => { if (e.target.closest("a") && menu.classList.contains("is-open")) burger.click(); });
+  /* ===== En-tête : géré par menu/menu.js ===== */
+  const nav = $("#nav");
 
   if (!motion) {
     /* Sans animation : défilement manuel du header uniquement */
@@ -389,7 +437,7 @@
     onUpdate: (self) => {
       const y = self.scroll();
       nav.classList.toggle("is-scrolled", y > 10);
-      nav.classList.toggle("is-hidden", self.direction === 1 && y > 500 && !menu.classList.contains("is-open"));
+      nav.classList.toggle("is-hidden", self.direction === 1 && y > 500 && !document.body.classList.contains("m-open") && !nav.querySelector(".m-item.is-open"));
     }
   });
 
@@ -451,10 +499,9 @@
     return () => vp.removeEventListener("scroll", upd);
   });
 
-  // Sessions : la frise se dessine, les cartes glissent
-  G.fromTo("#timeline-fill", { scaleY: 0 }, { scaleY: 1, ease: "none", scrollTrigger: { trigger: ".timeline", start: "top 75%", end: "bottom 60%", scrub: 0.5 } });
-  G.set(".event", { autoAlpha: 0, x: 60 });
-  ScrollTrigger.batch(".event", { start: "top 88%", once: true, onEnter: (b) => G.to(b, { autoAlpha: 1, x: 0, duration: 0.9, ease, stagger: 0.12 }) });
+  // Sessions : les cartes entrent en cascade, la barre de navigation suit
+  G.from(".session", { y: 70, autoAlpha: 0, rotate: 1.5, duration: 1, ease, stagger: 0.1, scrollTrigger: { trigger: "#sessions-carousel", start: "top 85%", once: true } });
+  G.from(".carousel__bar > *", { y: 16, autoAlpha: 0, duration: 0.7, ease, stagger: 0.06, delay: 0.3, scrollTrigger: { trigger: "#sessions-carousel", start: "top 85%", once: true } });
 
   // Engagement : les cartes s'empilent et reculent
   const cards = $$(".card");

@@ -9,6 +9,7 @@
   <link rel="preload" href="../fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../img/news-itil5.jpg" as="image">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../menu/menu.css">
 </head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
@@ -33,44 +34,7 @@
 
   <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
 
-  <div class="utility">
-    <div class="wrap utility__in">
-      <ul class="utility__contacts">
-        <li><a href="tel:+12403423141"><svg class="ic"><use href="#i-phone"/></svg>+1 240 342 3141</a></li>
-        <li><a href="tel:+22891061873">+228 91 06 18 73</a></li>
-        <li class="hide-sm"><a href="mailto:info@bostonsoluxacademy.com"><svg class="ic"><use href="#i-mail"/></svg>info@bostonsoluxacademy.com</a></li>
-      </ul>
-      <ul class="utility__links">
-        <li class="hide-sm"><a href="../index.html">Voir la version 1</a></li>
-        <li class="lang"><a href="#" aria-current="true">FR</a><a href="#">EN</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <header class="nav" id="nav">
-    <div class="wrap nav__in">
-      <a class="nav__logo" href="#"><img src="../logo-bs-academy.png" alt="BostonSolux Academy, Excellence in Training" width="1114" height="150"></a>
-      <nav aria-label="Navigation principale">
-        <ul class="nav__menu" id="menu">
-          <li><a href="#" aria-current="page">Accueil</a></li>
-          <li><a href="#domaines">Formations</a></li>
-          <li><a href="#sessions">Prochaines sessions</a></li>
-          <li><a href="#">Événements</a></li>
-          <li><a href="#">À propos</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#contact">Contacts</a></li>
-          <li class="nav__menu-extra"><a href="#">Plateforme e-learning</a></li>
-        </ul>
-      </nav>
-      <div class="nav__actions">
-        <a class="btn btn--ghost hide-md" href="#"><svg class="ic"><use href="#i-screen"/></svg>E-learning</a>
-        <a class="btn btn--red" href="#devis" data-magnetic>Demander un devis</a>
-        <button class="nav__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
-          <svg class="ic ic--lg"><use href="#i-menu"/></svg>
-        </button>
-      </div>
-    </div>
-  </header>
+  <div id="site-header" data-base="../" data-catalog="#domaines" data-refs="#references" data-partners="#partenaires" data-voices="#temoignages"></div>
 
   <main id="contenu">
     <!-- ===== Header : actualités en diaporama + recherche ===== -->
@@ -130,7 +94,7 @@
     </section>
 
     <!-- ===== Nos références ===== -->
-    <section class="refs" aria-labelledby="refs-title">
+    <section class="refs" id="references" aria-labelledby="refs-title">
       <div class="wrap refs__head">
         <h2 id="refs-title" data-split>Nos références</h2>
         <p>Ils nous ont fait confiance</p>
@@ -154,7 +118,7 @@
       </div>
     </section>
 
-    <!-- ===== Prochaines sessions : frise ===== -->
+    <!-- ===== Prochaines sessions : carrousel de cartes ===== -->
     <section class="sessions" id="sessions" aria-labelledby="sessions-title">
       <div class="wrap">
         <div class="section-head">
@@ -164,9 +128,14 @@
           </div>
           <div class="filters" role="group" aria-label="Filtrer par ville" id="city-filters"></div>
         </div>
-        <div class="timeline">
-          <div class="timeline__rail" aria-hidden="true"><span id="timeline-fill"></span></div>
-          <ol class="timeline__list" id="session-list"></ol>
+        <div class="carousel" id="sessions-carousel">
+          <ol class="carousel__track" id="session-list" tabindex="0" aria-label="Sessions à venir, faire défiler horizontalement"></ol>
+          <div class="carousel__bar">
+            <div class="carousel__progress" aria-hidden="true"><span id="sessions-progress"></span></div>
+            <p class="carousel__count" id="sessions-count" aria-live="polite"></p>
+            <button type="button" class="round round--light" id="sessions-prev" aria-label="Sessions précédentes"><svg class="ic"><use href="#i-left"/></svg></button>
+            <button type="button" class="round round--light" id="sessions-next" aria-label="Sessions suivantes"><svg class="ic"><use href="#i-right"/></svg></button>
+          </div>
         </div>
       </div>
     </section>
@@ -178,26 +147,26 @@
         <div class="stack" id="stack">
           <article class="card card--white">
             <div class="card__text"><h3>Des formateurs praticiens</h3><p>Experts certifiés qui appliquent chaque jour les référentiels qu'ils enseignent, et partagent leurs retours d'expérience de terrain.</p></div>
-            <img src="../img/news-42001.jpg" alt="Participants en salle de formation BostonSolux" loading="lazy">
+            <img src="../img/card-formateurs.jpg" alt="Formateur présentant devant un groupe de participants" loading="lazy">
           </article>
           <article class="card card--red">
             <div class="card__text"><h3>Une préparation pensée pour l'examen</h3><p>Le programme suit le référentiel officiel de l'organisme certificateur, avec mises en situation et examens blancs.</p></div>
-            <img src="../img/news-27005.jpg" alt="" loading="lazy">
+            <img src="../img/card-examen.jpg" alt="Professionnel concentré pendant ses révisions" loading="lazy">
           </article>
           <article class="card card--ink">
             <div class="card__text"><h3>Sur le terrain, près de vous</h3><p>Sessions à Conakry, Lomé, Abidjan, N'Djaména et Malabo, avec des bureaux à Rockville et Paris.</p></div>
-            <img src="../img/news-itil5.jpg" alt="Équipe BostonSolux lors du lancement d'ITIL Version 5" loading="lazy">
+            <img src="../img/card-terrain.jpg" alt="Participants réunis en salle de formation" loading="lazy">
           </article>
           <article class="card card--ochre">
             <div class="card__text"><h3>Un suivi jusqu'à la certification</h3><p>Accompagnement après la formation et accès à la plateforme e-learning pour réviser à votre rythme.</p></div>
-            <img src="../img/news-62443.jpg" alt="" loading="lazy">
+            <img src="../img/card-suivi.jpg" alt="Deux collègues célèbrent une réussite" loading="lazy">
           </article>
         </div>
       </div>
     </section>
 
     <!-- ===== Témoignages ===== -->
-    <section class="voices" aria-labelledby="voices-title">
+    <section class="voices" id="temoignages" aria-labelledby="voices-title">
       <div class="wrap voices__in">
         <div class="voices__head">
           <h2 id="voices-title" data-split>Ce qu'en disent les participants</h2>
@@ -212,7 +181,7 @@
     </section>
 
     <!-- ===== Nos partenaires ===== -->
-    <section class="partners" aria-labelledby="partners-title">
+    <section class="partners" id="partenaires" aria-labelledby="partners-title">
       <div class="wrap partners__in">
         <h2 id="partners-title" data-split>Nos partenaires</h2>
         <ul class="partners__list" id="partners-list"></ul>
@@ -297,7 +266,7 @@
       </div>
     </div>
     <div class="wrap foot__legal">
-      <p>© 2026 BostonSolux Academy</p>
+      <p>© 2026 BostonSolux Academy <a href="../index.html">Voir la version 1 de la maquette</a></p>
       <p><a href="https://www.bostonsolux.com">bostonsolux.com</a> <a href="https://www.bostonsoluxsecurity.com">bostonsoluxsecurity.com</a></p>
     </div>
   </footer>
@@ -307,6 +276,7 @@
   <script src="vendor/SplitText.min.js"></script>
   <script src="vendor/Flip.min.js"></script>
   <script src="../data.js"></script>
+  <script src="../menu/menu.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
