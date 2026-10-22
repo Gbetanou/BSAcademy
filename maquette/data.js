@@ -59,7 +59,8 @@ window.BSA = {
     { course: "pmp", start: "2026-10-26", end: "2026-10-30", city: "Conakry", country: "Guinée", venue: "Onomo Hôtel", title: "PMP, Project Management Professional" },
     { course: "42001", start: "2026-11-02", end: "2026-11-06", city: "Lomé", country: "Togo", venue: "Kpogan", title: "ISO/IEC 42001 Lead Implementer (SMIA)" },
     { course: "27005", start: "2026-11-09", end: "2026-11-13", city: "Abidjan", country: "Côte d'Ivoire", title: "ISO/IEC 27005 Lead Risk Manager" },
-    { course: "62443", start: "2026-11-09", end: "2026-11-13", city: "Lomé", country: "Togo", venue: "Kpogan", title: "ISA/IEC 62443 Lead Implementer : cybersécurité industrielle des systèmes OT" }
+    { course: "62443", start: "2026-11-09", end: "2026-11-13", city: "Lomé", country: "Togo", venue: "Kpogan", title: "ISA/IEC 62443 Lead Implementer : cybersécurité industrielle des systèmes OT" },
+    { course: "pmp", start: "2026-11-16", end: "2026-11-20", city: "Lomé", country: "Togo", title: "PMP, Project Management Professional" }
   ],
 
   // Veille normative : saisie manuelle par l'équipe (exemples de démonstration)
@@ -67,26 +68,31 @@ window.BSA = {
     { f: "itil", ref: "ITIL® Version 5", status: "Lancement", date: "2026-10-06",
       title: "ITIL Version 5 : la nouvelle Foundation est disponible",
       text: "Le référentiel de gestion des services numériques passe en version 5. Premières sessions certifiantes en Afrique de l'Ouest.",
+      teaser: "ITIL passe à la version 5. Mettez vos pratiques de gestion des services numériques à jour et faites partie des premiers certifiés de la région.",
       course: "itil5", img: "img/news-itil5.jpg" },
     { f: "iso", ref: "ISO/IEC 42001:2023", status: "Norme IA", date: "2026-09-29",
       title: "Management de l'IA : préparez votre système à la certification ISO/IEC 42001",
       text: "La première norme de système de management de l'IA : gouvernance, risques et usage responsable.",
+      teaser: "L'IA entre dans les systèmes de management. Apprenez à piloter la gouvernance, les risques et la conformité de vos usages d'IA avec la première norme dédiée.",
       course: "42001", img: "img/news-42001.jpg" },
     { f: "isa", ref: "ISA/IEC 62443-2-1:2024", status: "Nouvelle édition", date: "2026-09-15",
       title: "Cybersécurité OT : exigences renforcées pour les exploitants d'installations",
       text: "La partie 2-1 fixe le programme de sécurité attendu des exploitants de systèmes industriels (IACS).",
+      teaser: "Les installations industrielles sont devenues des cibles. La nouvelle édition précise le programme de sécurité attendu des exploitants : apprenez à le déployer.",
       course: "62443", img: "img/news-62443.jpg" },
     { f: "iso", ref: "ISO/IEC 27001:2022/Amd 1:2024", status: "Amendement", date: "2026-09-02",
       title: "Changement climatique : ce que l'amendement change pour votre SMSI",
       text: "Le changement climatique devient un enjeu à évaluer dans le contexte de tout SMSI.",
+      teaser: "Depuis l'amendement de 2024, le climat fait partie du contexte de votre SMSI. Découvrez ce qui change pour votre prochain audit de certification.",
       course: "27001li", img: "img/news-27001.jpg" },
     { f: "iso", ref: "ISO/IEC 27005:2022", status: "Méthode", date: "2026-08-20",
       title: "Analyse de risques : alignez votre méthode sur ISO/IEC 27005:2022",
       text: "Scénarios de risque, critères d'acceptation et lien direct avec les mesures de l'ISO/IEC 27001.",
+      teaser: "Une analyse de risques alignée sur la norme, ce sont des décisions plus solides et des audits plus sereins. Voici comment structurer la vôtre.",
       course: "27005", img: "img/news-27005.jpg" }
   ],
 
-  // Références clients (logos découpés depuis la planche « Ils nous font confiance »)
+  // Références clients : logos officiels (Wikimedia / sites des entreprises), sinon recadrés depuis la planche fournie
   references: [
     { id: "bank-of-africa", name: "Bank of Africa" },
     { id: "bgfi-bank", name: "BGFIBank" },
@@ -127,8 +133,8 @@ window.BSA = {
     { id: "segesa", name: "SEGESA" },
     { id: "yves-rocher", name: "Yves Rocher" },
     { id: "prudential", name: "Prudential Beneficial" },
-    { id: "min-trabajo-gq", name: "Ministerio de Trabajo de Guinea Ecuatorial" },
-    { id: "min-minas-gq", name: "Ministerio de Minas e Hidrocarburos" },
+    { id: "min-trabajo-gq", name: "Ministerio de Trabajo de Guinea Ecuatorial", logo: "img/references/coat-gq.png", text: "Ministerio de Trabajo, Fomento de Empleo y Seguridad Social" },
+    { id: "min-minas-gq", name: "Ministerio de Minas e Hidrocarburos", logo: "img/references/coat-gq.png", text: "Ministerio de Minas e Hidrocarburos" },
     { id: "uba", name: "UBA" },
     { id: "fnm-benin", name: "Fonds national de la microfinance Bénin" }
   ],
@@ -140,16 +146,138 @@ window.BSA = {
     { name: "Cisco Partner", logo: "img/logos/partner-cisco.png" }
   ],
 
+  // « Ils ont dit » : témoignages publiés sur bostonsoluxacademy.com, dans le même ordre
   testimonials: [
-    { name: "Djerane Nayam", role: "DSI, Orabank", course: "ISO/IEC 27032",
-      text: "J'ai trouvé très intéressant le contenu de la formation. La formation ISO 27032 vient ouvrir davantage les esprits sur la cybercriminalité, et surtout elle est arrivée au moment où le Tchad met en place un CERT national. Elle permettra d'aider efficacement à sa mise en place." },
-    { name: "Kamaladine Mahamat Ousmane", role: "Directeur technique, ONAMA", course: "ISO/IEC 27001",
-      text: "C'est la deuxième fois que j'assiste aux formations de BostonSolux. La première, c'était ISO 27001 Lead Implementer, et c'est toujours une impression de satisfaction, avec un formateur très expérimenté. BostonSolux est un partenaire fiable qui nous accompagne à chaque fois." },
+    { name: "Doumassem Olivier", role: "Responsable informatique, Attijari Bank Tchad", course: "ISO/IEC 27032",
+      text: "Je sors de cette formation PECB ISO 27032 bien outillé. J'ai appris beaucoup de notions et découvert de nouveaux concepts qui me permettront de mettre en place de nouvelles procédures et de faire la revue de celles qui existent déjà. […] Merci à BostonSolux pour cette opportunité et j'espère que ce ne sera pas la dernière fois." },
+    { name: "M. Amine Ali", role: "Responsable sécurité réseau, CNPS Tchad", course: "",
+      text: "Pour ma part, ayant évoqué un plan de carrière et avec d'aussi bonnes carrures dans la salle, je nous pressens un très bel avenir professionnel avec BostonSolux. Merci à toute la Team BostonSolux pour l'idée de visiter le Tchad !" },
     { name: "Lawson-Avla Richard", role: "Chef section exploitation réseau Core, Togocel", course: "CCNA",
       text: "La formation CCNA m'a permis d'obtenir des réponses à des questions précises liées à mon département, et surtout de profiter des retours d'expérience du formateur sur les meilleures pratiques en systèmes et réseaux." },
+    { name: "Ouro-Tou T. Yacoub", role: "Chef division systèmes et réseaux, Togocel", course: "CCNA",
+      text: "La session de formation CCNA s'est déroulée dans des conditions optimales avec les équipements adéquats, ce qui m'a permis de cerner les aspects pointus des systèmes et réseaux." },
+    { name: "Djerane Nayam", role: "DSI, Orabank", course: "ISO/IEC 27032",
+      text: "J'ai trouvé très intéressant le contenu de la formation. La formation ISO 27032 vient ouvrir davantage les esprits sur la cybercriminalité, et surtout elle est arrivée au moment où le Tchad met en place un CERT national. Elle permettra d'aider efficacement à sa mise en place." },
     { name: "Djimtobaye Permin", role: "Directeur du contrôle permanent", course: "ISO/IEC 27032",
       text: "Au terme de la formation sur la cybersécurité (ISO 27032), mes attentes sont couvertes. Je profiterai de la disponibilité du formateur pour un accompagnement afin de passer la certification." },
-    { name: "Mahamat Ahmat Harouna", role: "DSI, BSIC", course: "ISO/IEC 27032",
-      text: "La formation a été bien dispensée et à la hauteur de nos attentes. Le formateur maîtrise bien le sujet et ses explications sont claires." }
-  ]
+    { name: "Kamaladine Mahamat Ousmane", role: "Directeur technique, ONAMA", course: "ISO/IEC 27001",
+      text: "C'est la deuxième fois que j'assiste aux formations de BostonSolux. La première, c'était ISO 27001 Lead Implementer, et c'est toujours une impression de satisfaction, avec un formateur très expérimenté. BostonSolux est un partenaire fiable qui nous accompagne à chaque fois." },
+    { name: "Mahamat Ahmat Harouna", role: "DSI, BSIC", course: "",
+      text: "La formation a été bien dispensée et à la hauteur de nos attentes. Le formateur maîtrise bien le sujet et ses explications sont claires." },
+    { name: "Mansour Mahamat Ali", role: "Chef service réseaux informatiques, Douanes", course: "ISO/IEC 27032",
+      text: "Je suis tellement ravi d'avoir participé à la formation en ISO 27032. J'ai appris énormément sur la cybersécurité, les risques et comment y faire face. S'il y a d'autres possibilités de formation, je saisirai l'opportunité." }
+  ],
+  // « Nos engagements » (textes du site)
+  engagements: [
+    {
+      "id": "transformation",
+      "title": "Transformation",
+      "img": "img/card-terrain.jpg",
+      "icon": "trend",
+      "text": "Nous croyons au pouvoir transformateur de la formation pour les compétences, les carrières et les entreprises."
+    },
+    {
+      "id": "qualite",
+      "title": "Qualité",
+      "img": "img/card-examen.jpg",
+      "icon": "check",
+      "text": "Nous sommes engagés à fournir des formations d'excellence, fruit d'une veille pédagogique rigoureuse."
+    },
+    {
+      "id": "expertise",
+      "title": "Expertise",
+      "img": "img/card-formateurs.jpg",
+      "icon": "award",
+      "text": "Nos formateurs sont des praticiens, experts certifiés et reconnus dans leur domaine."
+    },
+    {
+      "id": "satisfaction",
+      "title": "Satisfaction client",
+      "img": "img/card-suivi.jpg",
+      "icon": "smile",
+      "text": "L'écoute, la rigueur et le professionnalisme guident chacune de nos actions afin de nous adapter en permanence aux objectifs et aux besoins de nos clients."
+    }
+  ],
+
+  // « Nos derniers séminaires & formations » (articles publiés sur le site)
+  posts: [
+    {
+      "date": "2026-08-17",
+      "cat": "Actualités",
+      "img": "img/posts/post-1.jpg",
+      "focus": "50% 25%",
+      "title": "5 bonnes raisons de se former à l'ISO 27001 Lead Implementer : comprendre, protéger et piloter la sécurité de l'information",
+      "excerpt": "Les entreprises produisent, stockent et partagent chaque jour une quantité importante d'informations : données clients, informations financières, documents internes, contrats…",
+      "url": "https://bostonsoluxacademy.com/5-bonnes-raisons-de-se-former-a-liso-27001-lead-implementer-comprendre-proteger-et-piloter-la-securite-de-linformation/"
+    },
+    {
+      "date": "2026-08-10",
+      "cat": "Actualités",
+      "img": "img/posts/post-2.jpg",
+      "focus": "50% 50%",
+      "title": "Quand la passion rencontre l'expérience : les Digital Dreamers à l'écoute d'un leader du numérique",
+      "excerpt": "Former les talents de demain ne consiste pas seulement à leur apprendre à utiliser les technologies.",
+      "url": "https://bostonsoluxacademy.com/quand-la-passion-rencontre-lexperience-les-digital-dreamers-a-lecoute-dun-leader-du-numerique/"
+    },
+    {
+      "date": "2026-06-09",
+      "cat": "Formations",
+      "img": "img/posts/post-3.jpg",
+      "focus": "50% 50%",
+      "title": "Digital Dreamers 2026 : la 3ᵉ édition du programme qui prépare les enfants aux métiers du numérique",
+      "excerpt": "Après le succès des éditions 2024 et 2025, BostonSolux Academy lance la 3ᵉ édition de Digital Dreamers, un programme d'initiation au numérique pour les enfants de 10 à 13 ans.",
+      "url": "https://bostonsoluxacademy.com/digital-dreamers-2026-la-3%e1%b5%89-edition-du-programme-qui-prepare-les-enfants-aux-metiers-du-numerique/"
+    },
+    {
+      "date": "2026-06-01",
+      "cat": "Blog",
+      "img": "img/posts/post-4.jpg",
+      "focus": "60% 35%",
+      "title": "5 formations pour se spécialiser en cybersécurité et en gestion des risques",
+      "excerpt": "La cybersécurité est aujourd'hui l'un des secteurs les plus recherchés du numérique, avec la hausse des cyberattaques, des fraudes en ligne et des violations de données.",
+      "url": "https://bostonsoluxacademy.com/5-formations-pour-se-specialiser-en-cybersecurite-et-en-gestion-des-risques/"
+    },
+    {
+      "date": "2026-04-12",
+      "cat": "Formations",
+      "img": "img/posts/post-5.jpg",
+      "focus": "50% 50%",
+      "title": "Formation PECB ISO/IEC 42001 Lead Implementer du 7 au 11 avril 2026",
+      "excerpt": "À l'heure où l'intelligence artificielle transforme les organisations, la mise en place d'une gouvernance efficace de l'IA devient une priorité stratégique.",
+      "url": "https://bostonsoluxacademy.com/formation-pecb-iso-iec-42001-lead-implementer-du-7-au-11-avril-2026/"
+    },
+    {
+      "date": "2026-02-25",
+      "cat": "Actualités",
+      "img": "img/posts/post-6.jpg",
+      "focus": "50% 40%",
+      "title": "BostonSolux célèbre le lancement officiel d'ITIL® Foundation Version 5",
+      "excerpt": "Une nouvelle étape majeure dans la gestion des services informatiques vient d'être franchie avec la sortie officielle d'ITIL® Foundation Version 5.",
+      "url": "https://bostonsoluxacademy.com/bostonsolux-celebre-le-lancement-officiel-ditil-foundation-version-5/"
+    }
+  ],
+
+  // « BostonSolux Academy TV » (vidéos intégrées sur le site)
+  videos: [
+    {
+      "id": "yfWeIEKZAA0",
+      "thumb": "img/tv/yfWeIEKZAA0.jpg",
+      "title": "Séminaire sur le référentiel ITIL en partenariat avec PeopleCert"
+    },
+    {
+      "id": "O8rXkpbckLw",
+      "thumb": "img/tv/O8rXkpbckLw.jpg",
+      "title": "Séminaire sur le référentiel ITIL en partenariat avec PeopleCert, Conakry 2024"
+    }
+  ],
+
+  // Liens officiels
+  links: {
+    "elearning": "https://elearning.bostonsoluxacademy.com/login",
+    "blog": "https://bostonsoluxacademy.com/blog/",
+    "youtube": "https://www.youtube.com/channel/UCd7b9K_BGh5menUsi_QJyAg",
+    "facebook": "https://www.facebook.com/BostonSolux",
+    "linkedin": "https://www.linkedin.com/company/bostonsolux-academy/",
+    "x": "https://x.com/BostonSolux"
+  }
 };
