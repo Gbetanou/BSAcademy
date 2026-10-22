@@ -114,7 +114,7 @@
   }
 
   const topHTML = `<div class="m-top"><div class="wrap m-top__in">
-      <p class="m-phones"><a href="tel:+12403423141">${ic("phone")}+1 240 342 3141</a><span class="m-sep">/</span><a href="tel:+22891061873">+228 91 06 18 73</a><span class="m-hide-sm"><span class="m-sep"> / </span></span><a class="m-more m-hide-sm" href="${esc(L.contact)}">${ic("plus")}Autres téléphones</a></p>
+      <p class="m-phones"><span class="m-contact">${ic("phone")}<span class="m-k">Tél :</span><a href="tel:+12403423141">+1 240 342 3141</a></span><span class="m-contact">${ic("mail")}<span class="m-k">Email :</span><a href="mailto:info@bostonsoluxacademy.com">info@bostonsoluxacademy.com</a></span></p>
       <div class="m-top__right">
         <button type="button" class="m-search" aria-label="Rechercher une formation sur le site">${ic("search")}</button>
         <div class="m-langs"><a href="#" aria-current="true">${flagFR}<span>FR</span></a><a href="#">${flagEN}<span>EN</span></a></div>

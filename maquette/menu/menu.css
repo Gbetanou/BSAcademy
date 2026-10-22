@@ -7,12 +7,12 @@
 /* ---------- Barre haute ---------- */
 .m-top { background: #f7f5f5; color: var(--m-ink); font-size: 0.9375rem; border-bottom: 1px solid #ece8e6; }
 .m-top__in { display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; min-height: 33px; flex-wrap: wrap; }
-.m-phones { display: flex; align-items: center; flex-wrap: wrap; gap: 0 6px; margin: 0; }
-.m-phones a { color: var(--m-red); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.m-phones { display: flex; align-items: center; flex-wrap: wrap; gap: 2px 26px; margin: 0; }
+.m-contact { display: inline-flex; align-items: center; gap: 6px; }
+.m-contact .m-ic { width: 15px; height: 15px; color: var(--m-red); }
+.m-k { color: var(--m-ink-2); }
+.m-phones a { color: var(--m-red); font-weight: 600; text-decoration: none; }
 .m-phones a:hover { text-decoration: underline; }
-.m-phones .m-sep { color: var(--m-ink-2); }
-.m-phones .m-more { color: var(--m-ink); margin-left: 4px; }
-.m-phones .m-more .m-ic { width: 13px; height: 13px; }
 .m-top__right { display: flex; align-items: center; gap: 22px; }
 .m-search { display: inline-grid; place-items: center; width: 28px; height: 28px; border: 0; border-radius: 0; cursor: pointer; color: #fff; background: var(--m-red); transition: background-color 160ms ease, transform 140ms var(--m-ease); }
 .m-search:hover { background: var(--m-red-deep); }
@@ -158,7 +158,8 @@ body.m-open { overflow: hidden; }
 @media (max-width: 720px) {
   .m-top { font-size: 0.8125rem; }
   .m-top__in { padding-top: 4px; padding-bottom: 4px; }
-  .m-phones .m-hide-sm { display: none; }
+  .m-k { display: none; }
+  .m-phones { gap: 2px 16px; }
   .m-logo img { width: 160px; }
 }
 @media (prefers-reduced-motion: reduce) {
