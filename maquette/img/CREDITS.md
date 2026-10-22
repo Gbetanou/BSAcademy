@@ -14,7 +14,8 @@ Toutes recadrées en 960 x 640 (ffmpeg). À remplacer par les visuels définitif
 
 | Dossier / fichier | Source |
 |---|---|
-| references/*.png (43 logos) | Découpés depuis la planche « Nos références, Ils nous font confiance » fournie par BostonSolux (960 x 540). Basse définition : à remplacer par les logos HD des clients. |
+| references/ (logos officiels) | Wikimedia Commons via Wikidata (P154) : Bank of Africa, Bank of America, BOAD, CARE, Coca-Cola, Coris Bank, Diamond Bank, Ecobank, Navy Federal, PNUD, SEGESA, Société Générale, UBA, Yves Rocher, Cofina, Moov Africa, blason de Guinée équatoriale (coat-gq.png, utilisé pour les deux ministères). Sites officiels : ANAC Togo (anac-togo.tg), ASECNA (asecna.aero), BGFIBank (groupebgfibank.com), CCEI Bank GE (cceibankge.com), CEB (cebnet.org), FNM Bénin (fnm.bj), NSIA (groupensia.com), Orabank (orabank.net), Port autonome de Lomé (togo-port.net), SALT (aeroportdelome.com), Zener (zenergroup.com), Attijariwafa (Wikipedia). |
+| references/ (recadrés) | BSIC, CNPS, CBT, BCC, La Poste, Prudential Beneficial, ANSICE, MUNI, ASAIGE, La Star Nationale, CAP, Togocom, INEGE : aucun logo source trouvé en ligne ; recadrés depuis la planche fournie, agrandis x2. À remplacer par les fichiers HD des clients. |
 | logos/partner-pecb.png | bostonsoluxacademy.com, section « Nos partenaires » (uploads/2024/05/PECB.png-web.png.webp) |
 | logos/partner-peoplecert.png | bostonsoluxacademy.com, section « Nos partenaires » (uploads/2024/06/peoplecert-vector-logo-900x0-1.png), marges retirées |
 | logos/partner-pmi.png | bostonsoluxacademy.com, section « Nos partenaires » (uploads/2024/05/ATP-PMI.jpg), recadré |

@@ -67,26 +67,31 @@ window.BSA = {
     { f: "itil", ref: "ITIL® Version 5", status: "Lancement", date: "2026-10-06",
       title: "ITIL Version 5 : la nouvelle Foundation est disponible",
       text: "Le référentiel de gestion des services numériques passe en version 5. Premières sessions certifiantes en Afrique de l'Ouest.",
+      teaser: "ITIL passe à la version 5. Mettez vos pratiques de gestion des services numériques à jour et faites partie des premiers certifiés de la région.",
       course: "itil5", img: "img/news-itil5.jpg" },
     { f: "iso", ref: "ISO/IEC 42001:2023", status: "Norme IA", date: "2026-09-29",
       title: "Management de l'IA : préparez votre système à la certification ISO/IEC 42001",
       text: "La première norme de système de management de l'IA : gouvernance, risques et usage responsable.",
+      teaser: "L'IA entre dans les systèmes de management. Apprenez à piloter la gouvernance, les risques et la conformité de vos usages d'IA avec la première norme dédiée.",
       course: "42001", img: "img/news-42001.jpg" },
     { f: "isa", ref: "ISA/IEC 62443-2-1:2024", status: "Nouvelle édition", date: "2026-09-15",
       title: "Cybersécurité OT : exigences renforcées pour les exploitants d'installations",
       text: "La partie 2-1 fixe le programme de sécurité attendu des exploitants de systèmes industriels (IACS).",
+      teaser: "Les installations industrielles sont devenues des cibles. La nouvelle édition précise le programme de sécurité attendu des exploitants : apprenez à le déployer.",
       course: "62443", img: "img/news-62443.jpg" },
     { f: "iso", ref: "ISO/IEC 27001:2022/Amd 1:2024", status: "Amendement", date: "2026-09-02",
       title: "Changement climatique : ce que l'amendement change pour votre SMSI",
       text: "Le changement climatique devient un enjeu à évaluer dans le contexte de tout SMSI.",
+      teaser: "Depuis l'amendement de 2024, le climat fait partie du contexte de votre SMSI. Découvrez ce qui change pour votre prochain audit de certification.",
       course: "27001li", img: "img/news-27001.jpg" },
     { f: "iso", ref: "ISO/IEC 27005:2022", status: "Méthode", date: "2026-08-20",
       title: "Analyse de risques : alignez votre méthode sur ISO/IEC 27005:2022",
       text: "Scénarios de risque, critères d'acceptation et lien direct avec les mesures de l'ISO/IEC 27001.",
+      teaser: "Une analyse de risques alignée sur la norme, ce sont des décisions plus solides et des audits plus sereins. Voici comment structurer la vôtre.",
       course: "27005", img: "img/news-27005.jpg" }
   ],
 
-  // Références clients (logos découpés depuis la planche « Ils nous font confiance »)
+  // Références clients : logos officiels (Wikimedia / sites des entreprises), sinon recadrés depuis la planche fournie
   references: [
     { id: "bank-of-africa", name: "Bank of Africa" },
     { id: "bgfi-bank", name: "BGFIBank" },
@@ -127,8 +132,8 @@ window.BSA = {
     { id: "segesa", name: "SEGESA" },
     { id: "yves-rocher", name: "Yves Rocher" },
     { id: "prudential", name: "Prudential Beneficial" },
-    { id: "min-trabajo-gq", name: "Ministerio de Trabajo de Guinea Ecuatorial" },
-    { id: "min-minas-gq", name: "Ministerio de Minas e Hidrocarburos" },
+    { id: "min-trabajo-gq", name: "Ministerio de Trabajo de Guinea Ecuatorial", logo: "img/references/coat-gq.png", text: "Ministerio de Trabajo, Fomento de Empleo y Seguridad Social" },
+    { id: "min-minas-gq", name: "Ministerio de Minas e Hidrocarburos", logo: "img/references/coat-gq.png", text: "Ministerio de Minas e Hidrocarburos" },
     { id: "uba", name: "UBA" },
     { id: "fnm-benin", name: "Fonds national de la microfinance Bénin" }
   ],

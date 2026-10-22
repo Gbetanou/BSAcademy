@@ -325,6 +325,8 @@ html { scrollbar-color: var(--rule-strong) var(--paper); }
 .marquee:hover .marquee__row, .marquee:focus-within .marquee__row { animation-play-state: paused; }
 .marquee__row li { flex: none; display: flex; align-items: center; justify-content: center; height: 72px; padding: 0 26px; }
 .marquee__row img { max-height: 56px; max-width: 150px; width: auto; height: auto; object-fit: contain; }
+.marquee__lockup { gap: 10px; }
+.marquee__lockup span { max-width: 17ch; font-size: 0.75rem; font-weight: 700; line-height: 1.25; color: #2b4a2b; text-align: left; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* En-têtes de section */
@@ -441,8 +443,8 @@ section h2 { font-size: clamp(1.875rem, 3.2vw, 2.75rem); font-weight: 800; font-
 .form__msg { margin: 0; min-height: 1.5em; font-weight: 600; color: var(--white) !important; }
 .form--inline { grid-template-columns: minmax(0, 1fr) auto; }
 .form--inline .form__msg { grid-column: 1 / -1; }
-.cta .btn--red { background: var(--ink); }
-.cta .btn--red:hover { background: #000; }
+.cta .btn--red { background: linear-gradient(180deg, #45403f 0%, var(--ink) 60%, #0e0c0c 100%); box-shadow: 0 12px 24px -10px rgba(40, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.14); text-shadow: none; }
+.cta .btn--red:hover { background: linear-gradient(180deg, #57514f 0%, #2a2525 60%, #0e0c0c 100%); }
 
 /* Pied de page */
 .foot {
@@ -452,8 +454,8 @@ section h2 { font-size: clamp(1.875rem, 3.2vw, 2.75rem); font-weight: 800; font-
 .foot::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background:
-    linear-gradient(90deg, rgba(24, 6, 7, 0.92) 0%, rgba(24, 6, 7, 0.72) 45%, rgba(24, 6, 7, 0.5) 100%),
-    linear-gradient(180deg, rgba(24, 6, 7, 0.2) 0%, rgba(24, 6, 7, 0.85) 100%);
+    linear-gradient(90deg, rgba(30, 6, 7, 0.86) 0%, rgba(30, 6, 7, 0.55) 40%, rgba(30, 6, 7, 0.25) 100%),
+    linear-gradient(180deg, rgba(30, 6, 7, 0) 40%, rgba(30, 6, 7, 0.7) 100%);
 }
 .foot__in { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-top: 64px; padding-bottom: 48px; }
 .foot__brand img { width: 240px; background: var(--white); padding: 12px 14px; box-sizing: content-box; }

@@ -212,7 +212,7 @@
 
   /* ===== Nos références : défilement sur une ligne ===== */
   const row = $(".marquee__row");
-  const refItem = (ref, dup) => `<li${dup ? ' aria-hidden="true"' : ""}><img src="${esc(ref.logo || `img/references/${ref.id}.png`)}" alt="${dup ? "" : esc(ref.name)}" decoding="async"></li>`;
+  const refItem = (ref, dup) => `<li${dup ? ' aria-hidden="true"' : ""}${ref.text ? ' class="marquee__lockup"' : ""}><img src="${esc(ref.logo || `img/references/${ref.id}.png`)}" alt="${dup || ref.text ? "" : esc(ref.name)}" decoding="async">${ref.text ? `<span>${esc(ref.text)}</span>` : ""}</li>`;
   row.innerHTML = references.map((r) => refItem(r, false)).join("") + (reduced ? "" : references.map((r) => refItem(r, true)).join(""));
   row.style.setProperty("--marquee-dur", `${Math.round(references.length * 1.5)}s`);
 
